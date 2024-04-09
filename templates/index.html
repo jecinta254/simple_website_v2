@@ -13,22 +13,35 @@
     </style>
 </head>
 <body>
+{% include 'nav.html' %}
+<h1 class="text-center mb-4 mt-4">{{company_name}} Careers</h1>
+  <img id="banner" class="img-fluid" src="http://localhost:5000/static/c1.png">
 <div class="container">
-    <h1 class="text-center mb-4 mt-4">{{company_name}} Careers</h1>
-    <img id="banner" class="img-fluid" src="http://localhost:5000/static/c1.png">
+    
     <h2 class="text-center mt-5">About Us</h2>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vero totam quis animi ipsam veniam, exercitationem ad deserunt recusandae delectus veritatis, sunt culpa adipisci distinctio! Similique amet debitis aspernatur modi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus, eligendi odio nemo et veniam dicta amet suscipit quidem perferendis eaque assumenda earum ab neque exercitationem facere magni doloremque illo. Veritatis!</p>
-    <h2 class="text-center">Open Positions</h2>
 
+    <div class="row margin-bottom:16px">
+        <div class="col-md-6">
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vero totam quis animi ipsam veniam, exercitationem ad deserunt recusandae delectus veritatis, sunt culpa adipisci distinctio! Similique amet debitis aspernatur modi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus, eligendi odio nemo et veniam dicta amet suscipit quidem perferendis eaque assumenda earum ab neque exercitationem facere magni doloremque illo. Veritatis!</p>
+        </div>
+        <div class="d-none d-md-block col-md-6">
+            <img src="/static/c2.png" alt="" style="height: 320px; border-radius: 4px;">
+        </div>
+
+    
+    </div>
+    
+    <h2 class="text-center">Open Positions</h2>
         <div>
             {% for job in jobs %}
             {% include 'jobitem.html' %}
             {% endfor %}
         </div>
     <div class="text-center">
-        <button class="btn btn-primary btn-lg">Contact Us</button>
-        <p class="mt-5">copyright 2024, Jecinta</p>
+        <button class="btn btn-primary btn-lg mt-5">Contact Us</button>
+    
     </div>
 </div>
 </body>
+{% include 'footer.html' %}
 </html>

@@ -1,9 +1,25 @@
-from sqlalchemy import create_engine, MetaData, Table, Base, Session  
+import MySQLdb
 
-engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format("root", "root", "Careers"), pool_pre_ping=True)
-Base.metadata.create_all(engine)
+connection = MySQLdb.connect(host="localhost", port=3306, user="root", passwd="focus", db="jobs", charset="utf8")
+cursor = connection.cursor()
 
-session = Session(engine)
-for jobs in session.query(title).order_by(title.id).all(): # HERE: no SQL query, only objects!
-    print("{}: {}".format(jobs.id, jobs.name))
-session.close()
+select_data = "SELECT * FROM jobs"
+
+cursor.execute(select_data)
+
+jobs = cursor.fetchall()
+
+# Fetch column names
+columns = [column[0] for column in cursor.description]
+
+# Convert each row into a dictionary
+jobs_dicts = []
+for row in jobs:
+    jobs_dicts.append(dict(zip(columns, row)))
+
+# Print the dictionaries
+for job_dict in jobs_dicts:
+    print(job_dict)
+
+cursor.close()
+connection.close()
